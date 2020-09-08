@@ -7,6 +7,21 @@ pub enum Text {
 
 /// [https://api.slack.com/reference/block-kit/composition-objects#text](https://api.slack.com/reference/block-kit/composition-objects#text)
 ///
+/// Note that for the most part (unless you want to set `emoji` away from it's
+/// default), you can just pass in `&`[`str`] anywhere that [`PlainText`] is
+/// expected, and the `impl `[`From`]`<&`[`str`]`>`, along with the builder
+/// methods will convert it for you.
+///
+/// Create a builder with [`PlainText::builder()`]
+///
+/// Available fields you can call on the builder:
+///
+/// - `.text(`[`Into`]`<`[`String`]`>)` - required. [`String`] and `&`[`str`]
+///   are the obvious options here
+/// - `.emoji(`[`bool`]`)` - optional
+///
+/// Finalise the builder with `.build()` to retrieve a [`PlainText`]
+///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
@@ -45,6 +60,21 @@ impl From<&str> for PlainText {
 }
 
 /// [https://api.slack.com/reference/block-kit/composition-objects#text](https://api.slack.com/reference/block-kit/composition-objects#text)
+///
+/// Note that for the most part (unless you want to set `verbatim` away from
+/// it's default), you can just pass in `&`[`str`] anywhere that [`Markdown`] is
+/// expected, and the `impl `[`From`]`<&`[`str`]`>`, along with the builder
+/// methods will convert it for you.
+///
+/// Create a builder with [`Markdown::builder()`]
+///
+/// Available fields you can call on the builder:
+///
+/// - `.text(`[`Into`]`<`[`String`]`>)` - required. [`String`] and `&`[`str`]
+///   are the obvious options here
+/// - `.verbatim(`[`bool`]`)` - optional
+///
+/// Finalise the builder with `.build()` to retrieve a [`Markdown`]
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
@@ -90,6 +120,18 @@ pub enum ConfirmationStyle {
 }
 
 /// [https://api.slack.com/reference/block-kit/composition-objects#confirm](https://api.slack.com/reference/block-kit/composition-objects#confirm)
+///
+/// Create a builder with [`Confirmation::builder()`]
+///
+/// Available fields:
+///
+/// - `.title(`[`Into`]`<`[`PlainText`]`>)` - required
+/// - `.text(`[`Into`]`<`[`Text`]`>)` - required
+/// - `.confirm(`[`Into`]`<`[`PlainText`]`>)` - required
+/// - `.deny(`[`Into`]`<`[`PlainText`]`>)` - required
+/// - `.style(`[`ConfirmationStyle`]`)` - optional
+///
+/// Finalise the builder with `.build()` to retrieve a [`Confirmation`].
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
@@ -149,6 +191,16 @@ pub enum OptionItem {
 
 /// [https://api.slack.com/reference/block-kit/composition-objects#option](https://api.slack.com/reference/block-kit/composition-objects#option)
 ///
+/// Create a builder with [`PlainTextOptionItem::builder()`]
+///
+/// Available fields:
+///
+/// - `.text(`[`Into`]`<`[`PlainText`]`>)` - required
+/// - `.value(`[`Into`]`<`[`String`]`>)` - required
+/// - `.description(`[`Into`]`<`[`PlainText`]`>)` - optional
+///
+/// Finalise the builder with `.build()` to retrieve a [`PlainTextOptionItem`].
+///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
@@ -186,6 +238,16 @@ pub struct PlainTextOptionItem {
 ///
 /// For use in Radio buttons and Checkboxes
 ///
+/// Create a builder with [`MarkdownOptionItem::builder()`]
+///
+/// Available fields:
+///
+/// - `.text(`[`Into`]`<`[`PlainText`]`>)` - required
+/// - `.value(`[`Into`]`<`[`String`]`>)` - required
+/// - `.description(`[`Into`]`<`[`PlainText`]`>)` - optional
+///
+/// Finalise the builder with `.build()` to retrieve a [`MarkdownOptionItem`].
+///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
@@ -222,6 +284,17 @@ pub struct MarkdownOptionItem {
 ///
 /// Overflow options have this extra `url` option, otherwise they're the same as
 /// the PlainTextOptionItem
+///
+/// Create a builder with [`OverflowOptionItem::builder()`]
+///
+/// Available fields:
+///
+/// - `.text(`[`Into`]`<`[`PlainText`]`>)` - required
+/// - `.value(`[`Into`]`<`[`String`]`>)` - required
+/// - `.description(`[`Into`]`<`[`PlainText`]`>)` - optional
+/// - `.url(`[`Into`]`<`[`String`]`>)` - optional
+///
+/// Finalise the builder with `.build()` to retrieve a [`OverflowOptionItem`].
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
@@ -263,6 +336,15 @@ pub struct OverflowOptionItem {
 ///
 /// These only work for select + multi select, so they only support plaintext
 /// `options`.
+///
+/// Create a builder with [`OptionGroup::builder()`]
+///
+/// Available fields:
+///
+/// - `.label(`[`Into`]`<`[`PlainText`]`>)` - required
+/// - `.options(`[`Vec`]`<`[`PlainTextOptionItem`]`>)` - required
+///
+/// Finalise the builder with `.build()` to retrieve a [`OverflowOptionItem`].
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
@@ -366,8 +448,18 @@ pub enum FilterInclusions {
 
 /// [https://api.slack.com/reference/block-kit/composition-objects#filter_conversations](https://api.slack.com/reference/block-kit/composition-objects#filter_conversations)
 ///
-/// These are all technically optional, but at least one of the 3 must be set. I
-/// don't have a way to model this in the type system currently
+/// Create a builder with [`Filter::builder()`]
+///
+/// Available fields you can call on the builder:
+///
+/// - `.include(Vec<`[`FilterInclusions`]`>)` - optional
+/// - `.exclude_external_shared_channels(`[`bool`]`)` - optional
+/// - `.exclude_bot_users(`[`bool`]`)` - optional
+///
+/// Note: These are all technically optional, but at least one of the 3 must be
+/// set. I don't have a way to model this in the type system currently
+///
+/// Finalise the builder with `.build()`
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
@@ -379,7 +471,10 @@ pub enum FilterInclusions {
 /// });
 ///
 /// let filter = Filter::builder()
-///     .include(vec![FilterInclusions::Public, FilterInclusions::MPIM])
+///     .include(vec![
+///       FilterInclusions::Public,
+///       FilterInclusions::MPIM,
+///     ])
 ///     .exclude_bot_users(true)
 ///     .build();
 ///
@@ -387,9 +482,11 @@ pub enum FilterInclusions {
 /// assert_json_eq!(expected, output);
 /// ```
 #[derive(TypedBuilder, Serialize)]
+#[builder(builder_method_doc = "")]
 pub struct Filter {
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(setter(strip_option), default)]
+    /// Included
     include: Option<Vec<FilterInclusions>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(setter(strip_option), default)]
