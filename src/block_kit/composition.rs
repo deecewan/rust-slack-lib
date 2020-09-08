@@ -5,13 +5,12 @@ pub enum Text {
     Markdown(Markdown),
 }
 
-/// https://api.slack.com/reference/block-kit/composition-objects#text
+/// [https://api.slack.com/reference/block-kit/composition-objects#text](https://api.slack.com/reference/block-kit/composition-objects#text)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// let expected = json!({
 ///   "type": "plain_text",
 ///   "text": "This is some plain text"
@@ -45,13 +44,12 @@ impl From<&str> for PlainText {
     }
 }
 
-/// https://api.slack.com/reference/block-kit/composition-objects#text
+/// [https://api.slack.com/reference/block-kit/composition-objects#text](https://api.slack.com/reference/block-kit/composition-objects#text)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// let expected = json!({
 ///   "type": "mrkdwn",
 ///   "text": "*Some* _formatted_ ~text~"
@@ -91,7 +89,7 @@ pub enum ConfirmationStyle {
     Danger,
 }
 
-/// https://api.slack.com/reference/block-kit/composition-objects#confirm
+/// [https://api.slack.com/reference/block-kit/composition-objects#confirm](https://api.slack.com/reference/block-kit/composition-objects#confirm)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
@@ -149,13 +147,12 @@ pub enum OptionItem {
     MarkdownOptionItem(MarkdownOptionItem),
 }
 
-/// https://api.slack.com/reference/block-kit/composition-objects#option
+/// [https://api.slack.com/reference/block-kit/composition-objects#option](https://api.slack.com/reference/block-kit/composition-objects#option)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// let expected = json!({
 ///   "text": {
 ///       "type": "plain_text",
@@ -185,14 +182,14 @@ pub struct PlainTextOptionItem {
     description: Option<PlainText>,
 }
 
-/// https://api.slack.com/reference/block-kit/composition-objects#option
+/// [https://api.slack.com/reference/block-kit/composition-objects#option](https://api.slack.com/reference/block-kit/composition-objects#option)
+///
 /// For use in Radio buttons and Checkboxes
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// let expected = json!({
 ///   "text": {
 ///       "type": "mrkdwn",
@@ -221,7 +218,8 @@ pub struct MarkdownOptionItem {
     description: Option<PlainText>,
 }
 
-/// https://api.slack.com/reference/block-kit/composition-objects#option
+/// [https://api.slack.com/reference/block-kit/composition-objects#option](https://api.slack.com/reference/block-kit/composition-objects#option)
+///
 /// Overflow options have this extra `url` option, otherwise they're the same as
 /// the PlainTextOptionItem
 ///
@@ -229,7 +227,6 @@ pub struct MarkdownOptionItem {
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// let expected = json!({
 ///   "text": {
 ///       "type": "plain_text",
@@ -262,7 +259,8 @@ pub struct OverflowOptionItem {
     url: Option<String>,
 }
 
-/// https://api.slack.com/reference/block-kit/composition-objects#option_group
+/// [https://api.slack.com/reference/block-kit/composition-objects#option_group](https://api.slack.com/reference/block-kit/composition-objects#option_group)
+///
 /// These only work for select + multi select, so they only support plaintext
 /// `options`.
 ///
@@ -270,7 +268,6 @@ pub struct OverflowOptionItem {
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// // This one's pretty long :grimacing:
 /// let expected = json!([
 ///   {
@@ -367,7 +364,7 @@ pub enum FilterInclusions {
     Public,
 }
 
-/// https://api.slack.com/reference/block-kit/composition-objects#filter_conversations
+/// [https://api.slack.com/reference/block-kit/composition-objects#filter_conversations](https://api.slack.com/reference/block-kit/composition-objects#filter_conversations)
 ///
 /// These are all technically optional, but at least one of the 3 must be set. I
 /// don't have a way to model this in the type system currently
@@ -376,7 +373,6 @@ pub enum FilterInclusions {
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// let expected = json!({
 ///   "include": ["public", "mpim"],
 ///   "exclude_bot_users": true

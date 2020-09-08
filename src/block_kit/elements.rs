@@ -91,7 +91,7 @@ impl Default for ButtonStyle {
     }
 }
 
-/// https://api.slack.com/reference/block-kit/block-elements#button
+/// [https://api.slack.com/reference/block-kit/block-elements#button](https://api.slack.com/reference/block-kit/block-elements#button)
 ///
 /// A regular interactive button
 ///
@@ -205,7 +205,7 @@ pub struct Button {
     confirm: Option<composition::Confirmation>,
 }
 
-/// https://api.slack.com/reference/block-kit/block-elements#checkboxes
+/// [https://api.slack.com/reference/block-kit/block-elements#checkboxes](https://api.slack.com/reference/block-kit/block-elements#checkboxes)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
@@ -292,7 +292,7 @@ pub struct Checkboxes {
     confirm: Option<composition::Confirmation>,
 }
 
-/// https://api.slack.com/reference/block-kit/block-elements#datepicker
+/// [https://api.slack.com/reference/block-kit/block-elements#datepicker](https://api.slack.com/reference/block-kit/block-elements#datepicker)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
@@ -342,7 +342,7 @@ pub struct Datepicker {
     confirm: Option<composition::Confirmation>,
 }
 
-/// https://api.slack.com/reference/block-kit/block-elements#image
+/// [https://api.slack.com/reference/block-kit/block-elements#image](https://api.slack.com/reference/block-kit/block-elements#image)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
@@ -377,14 +377,13 @@ pub struct Image {
     alt_text: String,
 }
 
-/// https://api.slack.com/reference/block-kit/block-elements#static_multi_select
+/// [https://api.slack.com/reference/block-kit/block-elements#static_multi_select](https://api.slack.com/reference/block-kit/block-elements#static_multi_select)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::elements::*;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// let expected = json!({
 ///   "action_id": "text1234",
 ///   "type": "multi_static_select",
@@ -474,14 +473,13 @@ pub struct MultiStaticSelect {
     max_selected_items: Option<i32>,
 }
 
-/// https://api.slack.com/reference/block-kit/block-elements#external_multi_select
+/// [https://api.slack.com/reference/block-kit/block-elements#external_multi_select](https://api.slack.com/reference/block-kit/block-elements#external_multi_select)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::elements::*;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// let expected = json!({
 ///   "action_id": "text1234",
 ///   "type": "multi_external_select",
@@ -532,14 +530,13 @@ pub struct MultiExternalSelect {
     max_selected_items: Option<i32>,
 }
 
-/// https://api.slack.com/reference/block-kit/block-elements#users_multi_select
+/// [https://api.slack.com/reference/block-kit/block-elements#users_multi_select](https://api.slack.com/reference/block-kit/block-elements#users_multi_select)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::elements::*;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// let expected = json!({
 ///   "action_id": "text1234",
 ///   "type": "multi_users_select",
@@ -584,14 +581,13 @@ pub struct MultiUsersSelect {
     max_selected_items: Option<i32>,
 }
 
-/// https://api.slack.com/reference/block-kit/block-elements#conversation_multi_select
+/// [https://api.slack.com/reference/block-kit/block-elements#conversation_multi_select](https://api.slack.com/reference/block-kit/block-elements#conversation_multi_select)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::elements::*;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// let expected = json!({
 ///   "action_id": "text1234",
 ///   "type": "multi_conversations_select",
@@ -644,14 +640,13 @@ pub struct MultiConversationsSelect {
     filter: Option<composition::Filter>,
 }
 
-/// https://api.slack.com/reference/block-kit/block-elements#channel_multi_select
+/// [https://api.slack.com/reference/block-kit/block-elements#channel_multi_select](https://api.slack.com/reference/block-kit/block-elements#channel_multi_select)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::elements::*;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// let expected = json!({
 ///   "action_id": "text1234",
 ///   "type": "multi_channels_select",
@@ -696,14 +691,13 @@ pub struct MultiChannelsSelect {
     max_selected_items: Option<i32>,
 }
 
-/// https://api.slack.com/reference/block-kit/block-elements#overflow
+/// [https://api.slack.com/reference/block-kit/block-elements#overflow](https://api.slack.com/reference/block-kit/block-elements#overflow)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::elements::*;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// let expected = json!({
 ///   "type": "overflow",
 ///   "options": [
@@ -793,14 +787,13 @@ pub struct Overflow {
     confirm: Option<composition::Confirmation>,
 }
 
-/// https://api.slack.com/reference/block-kit/block-elements#input
+/// [https://api.slack.com/reference/block-kit/block-elements#input](https://api.slack.com/reference/block-kit/block-elements#input)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::elements::*;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// let expected = json!({
 ///   "type": "plain_text_input",
 ///   "action_id": "plain_input",
@@ -850,14 +843,13 @@ pub struct PlainTextInput {
     max_length: Option<i32>,
 }
 
-/// https://api.slack.com/reference/block-kit/block-elements#radio
+/// [https://api.slack.com/reference/block-kit/block-elements#radio](https://api.slack.com/reference/block-kit/block-elements#radio)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::elements::*;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// let expected = json!({
 ///   "type": "radio_buttons",
 ///   "action_id": "this_is_an_action_id",
@@ -933,14 +925,13 @@ pub struct RadioButtons {
     confirm: Option<composition::Confirmation>,
 }
 
-/// https://api.slack.com/reference/block-kit/block-elements#static_select
+/// [https://api.slack.com/reference/block-kit/block-elements#static_select](https://api.slack.com/reference/block-kit/block-elements#static_select)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::elements::*;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// let expected = json!({
 ///   "action_id": "text1234",
 ///   "type": "static_select",
@@ -1026,14 +1017,13 @@ pub struct StaticSelect {
     confirm: Option<composition::Confirmation>,
 }
 
-/// https://api.slack.com/reference/block-kit/block-elements#external_select
+/// [https://api.slack.com/reference/block-kit/block-elements#external_select](https://api.slack.com/reference/block-kit/block-elements#external_select)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::elements::*;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// let expected = json!({
 ///   "action_id": "text1234",
 ///   "type": "external_select",
@@ -1080,14 +1070,13 @@ pub struct ExternalSelect {
     confirm: Option<composition::Confirmation>,
 }
 
-/// https://api.slack.com/reference/block-kit/block-elements#users_select
+/// [https://api.slack.com/reference/block-kit/block-elements#users_select](https://api.slack.com/reference/block-kit/block-elements#users_select)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::elements::*;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// let expected = json!({
 ///   "action_id": "text1234",
 ///   "type": "users_select",
@@ -1128,14 +1117,13 @@ pub struct UsersSelect {
     confirm: Option<composition::Confirmation>,
 }
 
-/// https://api.slack.com/reference/block-kit/block-elements#conversation_select
+/// [https://api.slack.com/reference/block-kit/block-elements#conversation_select](https://api.slack.com/reference/block-kit/block-elements#conversation_select)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::elements::*;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// let expected = json!({
 ///   "action_id": "text1234",
 ///   "type": "conversations_select",
@@ -1185,14 +1173,13 @@ pub struct ConversationsSelect {
     // TODO: response_url_enabled
 }
 
-/// https://api.slack.com/reference/block-kit/block-elements#channel_select
+/// [https://api.slack.com/reference/block-kit/block-elements#channel_select](https://api.slack.com/reference/block-kit/block-elements#channel_select)
 ///
 /// ```
 /// # use assert_json_diff::assert_json_eq;
 /// # use serde_json::json;
 /// # use slack_lib::block_kit::elements::*;
 /// # use slack_lib::block_kit::composition::*;
-///
 /// let expected = json!({
 ///   "action_id": "text1234",
 ///   "type": "channels_select",
