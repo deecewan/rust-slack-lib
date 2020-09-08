@@ -142,6 +142,13 @@ pub struct Confirmation {
     style: Option<ConfirmationStyle>,
 }
 
+#[derive(Serialize)]
+#[serde(untagged)]
+pub enum OptionItem {
+    PlainTextOptionItem(PlainTextOptionItem),
+    MarkdownOptionItem(MarkdownOptionItem),
+}
+
 /// https://api.slack.com/reference/block-kit/composition-objects#option
 ///
 /// ```
@@ -166,6 +173,7 @@ pub struct Confirmation {
 /// assert_json_eq!(expected, output);
 /// ```
 // Used in select and multi-select
+#[impl_for(OptionItem)]
 #[derive(TypedBuilder, Serialize)]
 pub struct PlainTextOptionItem {
     #[builder(setter(into))]
@@ -201,6 +209,7 @@ pub struct PlainTextOptionItem {
 /// let output = serde_json::to_value(&option).unwrap();
 /// assert_json_eq!(expected, output);
 /// ```
+#[impl_for(OptionItem)]
 #[derive(TypedBuilder, Serialize)]
 pub struct MarkdownOptionItem {
     #[builder(setter(into))]
